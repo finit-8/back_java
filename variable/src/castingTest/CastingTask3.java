@@ -1,10 +1,7 @@
 package castingTest;
 
 public class CastingTask3 {
-	public static void main(String[] args) {
-		// String.valueOf(값);
-		// 어떤 값을 문자열로 형변환 시켜주는 메서드
-		
+	public static void main(String[] args) {	
 		char a = 'a', j = 'j', k = 'k';
 		// 모두 대문자로 바꿔서 출력
 		

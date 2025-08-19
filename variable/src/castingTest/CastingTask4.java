@@ -2,6 +2,9 @@ package castingTest;
 
 public class CastingTask4 {
 	public static void main(String[] args) {
+		// String.valueOf(값);
+		// 어떤 값을 문자열로 형변환 시켜주는 메서드		
+		
 //      "12.123";
 //      "345.789"
 //      "6789"

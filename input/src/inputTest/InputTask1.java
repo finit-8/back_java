@@ -21,6 +21,7 @@ public class InputTask1 {
       System.out.println(message);
       str1 = sc.next();
       str2 = sc.next();
+      
       num1 = Integer.parseInt(str1); 
       num2 = Integer.parseInt(str2); 
       result = num1 + num2;
