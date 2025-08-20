@@ -71,7 +71,7 @@ public class ArrayTask1Answer {
 //      int min = 0, max = 0;
 //      
 //      System.out.println(message);
-//      for(int i = 0; i < arData7.length; i++) {
+//      for(int i = 0; i < arData7.length; i++) {-
 //         arData7[i] = sc.nextInt();
 //      }
 //      
@@ -112,7 +112,7 @@ public class ArrayTask1Answer {
       System.out.print("[");
       for(int i = 0; i < length; i++) {
          System.out.print(arData8[i]);
-         if(i != length - 1) {
+         if(i < length - 1) {				
             System.out.print(" ");
          }
       }

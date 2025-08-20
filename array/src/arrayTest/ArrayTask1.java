@@ -141,6 +141,12 @@ System.out.println("\n=========================== \n골드");
 		int maxNum = 0, minNum = 0;
 		for(int i = 0; i < 5; i++) {
 			arr7[i] = key.nextInt();
+		}
+		
+		maxNum = arr7[0];
+		minNum = arr7[0];			// 모든 입력값이 0보다 크므로, 배열 첫번째 값으로 해야 0이 최소값으로 고정되지 않는다.
+
+		for(int i = 0; i < arr7.length; i++) {
 			if(minNum > arr7[i]) {
 				minNum = arr7[i];
 			} 						// arr7[i]를 기준으로 생각했을 때, 
@@ -157,16 +163,17 @@ System.out.println("\n=========================== \n다이아");
 //      다이아
 //      사용자가 입력할 정수의 개수만큼 배열을 만든 후 정수를 입력받고 평균 구하기
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int[] arr8 = new int[n];
+		int length = sc.nextInt();
+		int[] arr8 = null;		
 		int total = 0;
 		double avg = 0.0;
 		
+		arr8 = new int[length];
 		for(int i = 0; i < arr8.length; i++) {
 			arr8[i] = sc.nextInt();
 			total += arr8[i]; 
 		}
-		avg = total / arr8.length;
+		avg = (double)total / arr8.length;
 		System.out.println(avg);
 		
 		
