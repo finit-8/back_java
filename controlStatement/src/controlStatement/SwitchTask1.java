@@ -24,8 +24,12 @@ public class SwitchTask1 {
 		
 		str = sc.next();
 		int month = Integer.parseInt(str);
-		season = month / 3 % 4;
-		
+		season = month / 3 % 4;		// 입력값이 1 2나누기 3이 0인데, 0 % 4 = 4잖아
+									// 3 4 5 / 3 = 1, 1 % 4 = 1은 봄
+									// 6 7 8 / 3 = 2, 2 % 4 = 2는 여름
+									// 9 10 11 / 3 = 3, 3 % 4 = 3은 가을
+									// 12 / 3 = 4, 4 % 4 = 0은 겨울
+									// 1 2 / 3 = 0, 0 % 4 = 0은 겨울
 		switch(season) {
 			case 1: 
 				seasonMesagge = month + ("월은 봄입니다.");

@@ -86,19 +86,19 @@ public class ForTask2 {
 	   System.out.println("==================");
 
 	   // 1~30까지 짝수 중 첫번째 짝수와 마지막 짝수만 더해서 출력
-	   int firstEven = 0, lastEven = 0, count3 = 0;
+	   int firstEven = 0, lastEven = 0;
 	   for (int i = 0; i < 30; i++) {
 		   int value = (i + 1);
 		   if(value % 2 == 0) {
 			   if(firstEven == 0) {
-				   firstEven = value;
+				   firstEven = value;			// 첫번째 짝수 저장
 			   }
-			   if(firstEven > value) {
-				   firstEven = value;
-			   }
+//			   if(firstEven > value) {
+//				   firstEven = value;			없어도 되는 조건
+//			   }
 			   if(lastEven < value) {
-				   lastEven = value;
-			   };
+				   lastEven = value;			// 더 큰 짝수가 나올 때 마다 교체
+			   }
 		   }
 	   }
 	   System.out.println(firstEven + lastEven);
