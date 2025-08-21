@@ -16,17 +16,20 @@ public class ArrayTest {
 		int[] arrData3 = null; // null: 주소의 초기값 (내가 몇 칸을 만들지, 언제 만들지 모르지만, 
 								// 					참조래퍼런스를 쓸 거 같아서, 선언할때 주소를 대체하기 위해 null입력)	
 		
+		
+		
+		// 변수, 값 구분
+	    // 저장공간: 6개, 값: 11개
 		 int[] arData = new int[100];
 	      int result = 0;
-	      for(int i = 0; i < arData.length; i++) {		// ar.Data.length 논리값
+	      for(int i = 0; i < arData.length; i++) {		// i < ar.Data.length 논리값, i++ 증감연산이 된 값
 	         arData[i] = i + 1;							
 	      }
 	      
-	      for(int i = 0; i < arData.length; i++) {		// i++ 증감연산이 된 값
-	         if(i % 2 != 0) {							// 
+	      for(int i = 0; i < arData.length; i++) {
+	         if(i % 2 != 0) {							// 논리식 boolean값
 	            result += i;
 	         }
 	      }
-	      // 저장공간: 6개, 값: 11개
 	}
 }

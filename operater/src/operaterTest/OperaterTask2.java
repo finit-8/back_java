@@ -15,17 +15,18 @@ public class OperaterTask2 {
 		// 알고리즘: 대소구분 > ? num1 : num2
 		
 		Scanner sc = new Scanner(System.in);
-		String message = "3개의 숫자를 입력하세요. \n ex) 17 24 35", resultMessage = "중간값: %d";
+		String message = "3개의 숫자를 입력하세요. \n ex) 17 25 35", resultMessage = "중간값: %d";
+		int result1 = 0, result2 = 0, result3 = 0;
 		int num1 = 0, num2 = 0, num3 = 0, min = 0, max = 0, middle = 0;
 		
 		num1 = sc.nextInt();
 		num2 = sc.nextInt();
 		num3 = sc.nextInt();
 		
-//		result1 = num1 > num2 ? num2 : num1;
-//		result2 = num1 > num3 ? num3 : num1;		// num2, 3이 더 크면 num1 반환 ==> num1이 제일 작은 수
-//		result3 = num2 > num3 ? num2 : num3;		// num2와 3 비교해서 작은 값이 전체 수의 중간값이 됨.
-//		System.out.println(result3);
+		result1 = num1 > num2 ? num2 : num1;
+		result2 = num1 > num3 ? num3 : num1;		// num2, 3이 더 크면 num1 반환 ==> num1이 제일 작은 수
+		result3 = num2 > num3 ? num2 : num3;		// num1이 제일 작을 때, num2와 3 비교해서 작은 값이 전체 수의 중간값이 됨.
+		System.out.println(result3);
 		
 	      max = num1 > num2 ? 
 	            num1 > num3 ? num1 : num3 : 
