@@ -43,6 +43,7 @@ public class ArrayTask2 {
 //     2. 정수를 한글로 변경
 //     입력 예) 1024
 //     출력 예) 일공이사
+	   // 알고리즘: 정수를 순회하면서 스위치문으로 하나씩 출력해서 결과를 담을 변수에 누적 
      String input2 = null, message2 = "정수를 입력하세요.\nex)1024",
            result2 = "", hangle = "공일이삼사오육칠팔구";
      System.out.println(message2);
