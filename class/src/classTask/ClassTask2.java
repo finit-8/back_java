@@ -1,50 +1,94 @@
 package classTask;
 
-class Market {
-//   1. 상품명, 상품가격, 상품재고
-//   판매(sell)
-//  힌트: 판매를 할 때 매개변수로 어떤 것을 받아야 각각 유저마다의 할인율을 판매에 적용시킬 수 있을까?
-	String productName;
-	int price;
-	int stock;
-	
-	Market(){;}
-	public Market(String productName, int price, int stock, Customer customer) {
-		this.productName = productName;
-		this.price = price;
-		this.stock = stock;
-	}
-	
-	void sell(Customer customer) {
-		customer.name			// 여기부터 진행해야됨! 고객리스트를 어떻게 받지? 고객별로 할인율 적용해서 물건별로 판매해야되는데?
-	}
+import java.util.Scanner;
+
+// 학생 클래스
+// 학생이 국어점수, 영어점수, 수학점수를 입력하면
+// 총점과 평균을 확인해서 출력
+class Student {
+   int number;
+   int kor;
+   int eng;
+   int math;
+   int total;
+   double average;
+   
+   public Student() {;}
+   public Student(int number, int kor, int eng, int math) {
+      this.number = number;
+      this.kor = kor;
+      this.eng = eng;
+      this.math = math;
+      this.total = kor + eng + math;
+      this.average = Double.parseDouble(String.format("%.3f", total / 3.0));
+   }
+   
+   public Student(int number, int[] scores) {
+      this.number = number;
+      this.kor = scores[0];
+      this.eng = scores[1];
+      this.math = scores[2];
+      this.total = kor + eng + math;
+      this.average = Double.parseDouble(String.format("%.3f", total / 3.0));
+   }
+   
+   public Student(int number, Scores scores) {
+      this.number = number;
+      this.kor = scores.kor;
+      this.eng = scores.eng;
+      this.math = scores.math;
+      this.total = kor + eng + math;
+      this.average = Double.parseDouble(String.format("%.3f", total / 3.0));
+   }
 }
 
-class Customer {
-//   2. 이름, 폰, 돈, 할인율
-	String name;
-	String phoneNum;
-	int money;
-	int discountPersent;
-	
-	public Customer() {;}
-	public Customer(String name, String phoneNum, int money, int discountPersent) {
-		this.name = name;
-		this.phoneNum = phoneNum;
-		this.money = money;
-		this.discountPersent = discountPersent;
-	}
-}
+class Scores {
+   int kor;
+   int eng;
+   int math;
+   public Scores() {;}
+   public Scores(int kor, int eng, int math) {
+      this.kor = kor;
+      this.eng = eng;
+      this.math = math;
+   }
+   
+} 
 
 public class ClassTask2 {
    public static void main(String[] args) {
-//      3. 마켓, 소비자를 객체화 시키고,
-//      소비자에게 마켓의 물건을 판매
-//      마켓의 상품 재고와 소비자의 남은 금액을 출력
-	   Customer customer = new Customer();
-	   Market market = new Market("핸드폰", 50_000, 3, customer);
-	   
-	   
-	   
+      Scanner sc = new Scanner(System.in);
+      Student bae = null;
+      
+      Scores scores = new Scores();
+//      int[] scores = new int[3];
+//      int kor = 0, eng = 0, math = 0;
+      
+      String message = "국어, 영어, 수학 점수를 입력하세요.\nex)70 80 90";
+      
+      System.out.println(message);
+      scores.kor = sc.nextInt(); 
+      scores.eng = sc.nextInt(); 
+      scores.math = sc.nextInt(); 
+            
+      bae = new Student(1, scores);
+      
+      System.out.println("총 점: " + bae.total);
+      System.out.println("평 균: " + bae.average);
    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

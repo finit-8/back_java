@@ -21,7 +21,7 @@ public class Employee {
 		money += this.income;
 	}
 	
-	void printCompany() {
+	void printCompanyMoney() {
 		System.out.println(money);
 	}
 	
@@ -34,6 +34,6 @@ public class Employee {
 //		Employee.money = employee1.income + employee2.income + employee3.income + employee4.income;
 //		System.out.println(Employee.money);
 		
-		employee1.printCompany();
+		employee1.printCompanyMoney();
 	}
 }
