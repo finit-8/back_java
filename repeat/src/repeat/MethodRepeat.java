@@ -1,4 +1,5 @@
-package methodTest;
+package repeat;
+
 
 public class MethodRepeat {
 //		어떤 값을 전달하면 홀수인지, 짝수인지, 문자열인지 확인한 결과를 반환해주는 메서드

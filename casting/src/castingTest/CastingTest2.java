@@ -26,15 +26,15 @@ public class CastingTest2 {
       Car noOptionFerrari = new SuperCar();
       SuperCar optionFerrari = (SuperCar)noOptionFerrari;
       
-//      객체 instanceof 타입: 참 또는 거짓
+//      객체 instanceof 타입: 참 또는 거짓 리턴
+      
 //      자식은 부모 타입이다.
-      System.out.println(matiz instanceof Car);
+      System.out.println(noOptionFerrari instanceof Car);
 //      부모는 자식 타입이 아니다.
       System.out.println(matiz instanceof SuperCar);
       
       System.out.println(ferrari instanceof Car);
       System.out.println(ferrari instanceof SuperCar);
-      System.out.println(noOptionFerrari instanceof Car);
       System.out.println(noOptionFerrari instanceof SuperCar);
       System.out.println(optionFerrari instanceof Car);
       System.out.println(optionFerrari instanceof SuperCar);
