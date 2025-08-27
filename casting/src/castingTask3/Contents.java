@@ -1,12 +1,14 @@
 package castingTask3;
 
+// 애니메이션 드라마 뮤비 클래스 업캐스팅하기 위한 부모클래스
+
 public class Contents {
 	private String title;
 	private String genre;
 	private int watchingRemitAge;
 	
 	public Contents() {;}
-	public Contents(String title, String genre, int watchingRemitAge) {
+	public Contents(String title, String genre, int watchingRemitAge) {		// 자식클래스(Movie)가 외부(CastingTask3클래스의 main메서드)에서 받은 값을 받음.
 		this.title = title;
 		this.genre = genre;
 		this.watchingRemitAge = watchingRemitAge;
@@ -31,13 +33,7 @@ public class Contents {
 		this.watchingRemitAge = watchingRemitAge;
 	}
 	
-	void chooseContents(Contents contents) {
-		if(contents instanceof Animation) {
-			Animation animation = new Animation();
-			animation.showSubTitle();
-		}
-//		movie.provide4D();
-//		drama.provideGoods();
+	void show() {
+		System.out.println("즐거운 관람되세요");
 	}
-	
 }
