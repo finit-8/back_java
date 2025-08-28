@@ -27,8 +27,10 @@ public class Starbucks_Answer {
             for(String m: this.getMenus()) {
                if(menu.equals(m)) {
                   System.out.println("판매 완료");
+                  break;
                }else {
                   System.out.println("판매 준비중");
+                  break;
                }
             }
          }
@@ -46,6 +48,7 @@ public class Starbucks_Answer {
       
       form.showMenus();
       form.sell("김치");
+      form.sell("아메리카노");
       
       
    }

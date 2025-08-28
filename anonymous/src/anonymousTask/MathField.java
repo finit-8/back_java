@@ -6,9 +6,8 @@ public class MathField {
       
 //      메서드 구현 후 4개의 메서드 모두 사용
 
-// 		인터페이스(부모), 필드 클래스에서 출력, 자식 클래스에서 
 
-	   MathTask mathTask = new MathTask() {
+	   MathTask mathTask = new MathTask() {		// 익명 내부 클래스
          
          @Override
          public void printName(String name) {
@@ -22,8 +21,12 @@ public class MathField {
          
          @Override
          public CalcResult calc(int num1, int num2) {
-
-        	 return null;
+        	 CalcResult calcResult = new CalcResult();
+        	 calcResult.setAdd(num1+num2);
+        	 calcResult.setDevide(num1/(double)num2);
+        	 calcResult.setMurtiple(num1*num2);
+        	 calcResult.setSubtract(num1-num2);
+        	 return calcResult;
          }
          
          @Override
@@ -33,11 +36,14 @@ public class MathField {
       };
       
       mathTask.printName("박웅");
-      mathTask.concat("성", "이름");
-      mathTask.calc();
-      mathTask.add(1, 7);
+      System.out.println(mathTask.concat("성", "이름"));
+      System.out.println(mathTask.add(1, 7));
       
+      System.out.println("");
       
-      
+      System.out.println(mathTask.calc(3, 9).getAdd());
+      System.out.println(mathTask.calc(3, 9).getDevide());
+      System.out.println(mathTask.calc(3, 9).getSubtract());
+      System.out.println(mathTask.calc(3, 9).getMurtiple());
    }
 }

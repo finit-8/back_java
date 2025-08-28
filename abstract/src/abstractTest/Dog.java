@@ -1,6 +1,6 @@
 package abstractTest;
 
-public class Dog implements Pet{
+public class Dog implements Pet, Animal{
 	@Override
 	public void poop() {
 		System.out.println("패드 위에");
