@@ -1,26 +1,43 @@
 package castingTask4;
+//   - 마트 비회원과, 마트 회원을 객체화 시켜 물품을 구매하시오.
 
-// [캐스팅 심화]
-// 	마켓이 업캐스팅 위한 클래스
-// 	각 메서드는 자식클래스에 구현
-// 	업캐스팅 된 마켓 클래스를 사용할 클래스도 필요 ??? ==> x (멤버 논멤버클래스에서 마켓클래스 사용하면 될 듯) 
-
-	// 결과확인 클래스 (출력 클래스)
+// 결과 확인
 public class CastingTask4 {
-	public static void main(String[] args) {
-		// 여기서 객체 생성하면서 자식클래스의 초기화생성자로 값을 넘겨준다.
-		
-		// 1. 상품판매
-		
-		
-		// 2. 상품등록
-		String[] items = {"핸드폰", "수박", "노트북", "사료", "마우스", "김밥"};
-		Product product = new Product();
-		product.regist(items);
-		
-		// 물품구매
-//		String[] item = {};
-//		new MarketMember().buy(new Product());
-		
-	}
+   public static void main(String[] args) {
+      MarketMember hong = new MarketMember("홍길동", "01044447777", 10000);
+      Market market = new Market();
+      Product product = new Product("배승원의 모자", 500, 1);
+      Product[] myProducts = {
+         new Product("배승원의 모자", 500, 1),
+         new Product("배승원의 신발", 500, 1),
+         new Product("배승원의 점퍼", 500, 1),
+         new Product("이승찬의 안경", 500, 1),
+         new Product("이승찬의 맥북", 500, 1),
+      };
+      
+      
+      
+      market.registerProduct(product);
+      market.registerProducts(myProducts);
+      
+//      상품 구매
+      market.sell(hong, "배승원의 모자", 1);
+      System.out.println(hong.getMoney());
+      
+//      상품 조회
+      market.showProducts();
+   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package castingTask4_Answer;
+package castingTask4;
 
 //MarketMember 
 //- 필드: 이름, 전화번호, 돈, 포인트, 쿠폰
@@ -7,7 +7,7 @@ package castingTask4_Answer;
 //- 필드: 이름, 전화번호, 돈, 포인트, 쿠폰
 
 // grid 모드 alt + shift + a
-public class Customer_Answer {
+public class Customer {
 //   필드: 이름, 전화번호, 돈, 포인트, 쿠폰
    private String name;
    private String phone;
@@ -16,8 +16,8 @@ public class Customer_Answer {
    private int coupon;
    private int discount;
    
-   public Customer_Answer() {;}
-   public Customer_Answer(String name, String phone, long money) {
+   public Customer() {;}
+   public Customer(String name, String phone, long money) {
       this.name = name;
       this.phone = phone;
       this.money = money;
