@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 // setter getter 연습 위해 setter getter 선언한 클래스 파일을 만들고
 // setter getter 사용하여 1~10까지 출력해주는 람다구현 PrintNum, printUpTo10()
+
 	// 알고리즘: 배열에 담아서 배열 출력하는데, 배열의 값을 넘겨주면 배열이 아니라 값 하나만 출력되고, 배열을 넘겨주면 배열의 주소만 나옴.
 	// 			Arrays.toString 메서드 쓰면 배열의 주소값을 문자열로 반환해줘서 해결됨.
 

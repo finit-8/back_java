@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/calc.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/java-sdk v2.2/lib/javaSDK-2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/java-sdk v2.2/lib/json-simple-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/API/java_mail_api/activation-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/API/java_mail_api/mail-1.4.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/API/SMS API/java-sdk v2.2/lib/javaSDK-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/back_0900_pwg/Java/resource/API/SMS API/java-sdk v2.2/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
