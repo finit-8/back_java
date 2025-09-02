@@ -1,5 +1,5 @@
 package castingTask3;
-	// 업캐스팅 된 Contents클래스를 사용 및 자식클래스가 가지고 있는 각각의 메서드를 사용하기 위해 다운캐스팅하는 클래스
+	// '업캐스팅 된 Contents클래스를 사용' 및 자식클래스가 가지고 있는 각각의 메서드를 사용하기 위해 다운캐스팅하는 클래스
 public class User {
 	String ID;
 	String password;
@@ -27,6 +27,5 @@ public class User {
 		}
 		return contents;
 	}
-	
 	
 }

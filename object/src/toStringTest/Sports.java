@@ -24,7 +24,7 @@ public class Sports {
 		this.total = total;
 	}
 	
-//	객체가 가지고 있는 필드롤 보고싶을 때 사용
+//	toString은 객체가 가지고 있는 필드롤 보고싶을 때 사용
 	@Override
 	public String toString() {
 		return "Sports [type=" + type + ", total=" + total + "]";
