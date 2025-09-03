@@ -1,6 +1,7 @@
 package collectionTest.arrayList;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ArrayListTask3 {
 	public static void main(String[] args) {
@@ -64,25 +65,30 @@ public class ArrayListTask3 {
 
 	      
 	      // 4-1. 상품 재고가 100개 이하인 상품을 삭제
-	      ArrayList<Product> newProduct = new ArrayList<Product>();
-	      for(Product product : products) {
-	    	  if(product.getStock() > 100) {
-	    		  newProduct.add(product);
-	    	  }
-	      }
-	      products = newProduct;
-	      System.out.println(products);
-	      
-	      // 4-2. 상품 재고가 100개 이하인 상품을 삭제
+//	      ArrayList<Product> newProduct = new ArrayList<Product>();
 //	      for(Product product : products) {
-//	    	  if(product.getStock() <= 100) {
-//	    		  products.remove(products.indexOf(product));
+//	    	  if(product.getStock() > 100) {
+//	    		  newProduct.add(product);
 //	    	  }
 //	      }
-//	      System.out.println(products);	      		//	==>  java.util.ConcurrentModificationException 발생
+//	      products = newProduct;
+//	      System.out.println(products);
 	      
 	      
 	      
 	      
+	      // ↓ 미결
+	      // 4-2. 상품 재고가 100개 이하인 상품을 삭제
+//	      for(Product product : products) {						// 빠른 for문 : 자체적으로 이터레이터 순회하지만 이터레이터 몰래 순회하는거라 remove시, 
+	      														//				이터레이터가 뒤늦게 알고 ConcurrentModificationException 발생시킴
+	      Iterator<Product> iteration = products.iterator();	// ==> 이터레이터 반복자로 안전하게 순회하여 안전하게 삭제
+	      	while(iteration.hasNext()) {
+	      		Product product = iteration.next();
+//      			System.out.println(product);
+      			if(product.getStock() <= 100) {
+      				iteration.remove();
+	      		}
+	      	}
+	      System.out.println(products);	      			      
 	}
 }
