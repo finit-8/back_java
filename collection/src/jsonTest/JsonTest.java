@@ -15,7 +15,7 @@ public class JsonTest {
 		userMap.put("lng", "-34.4618");
 		
 		JSONObject json = new JSONObject(userMap);		// 포맷을 바꿀 땐 초기값을 잘 사용하면 된다
-		System.out.println(json);		// json형태 {}
+		System.out.println(json);			// json형태 {}
 		
 	}
 }
