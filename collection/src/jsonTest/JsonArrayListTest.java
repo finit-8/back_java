@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class JsonArrayTest {
+public class JsonArrayListTest {
 	public static void main(String[] args) {
 		ArrayList<User> users = new ArrayList<User>();
 		JSONArray usersJSON = new JSONArray();
@@ -41,8 +41,10 @@ public class JsonArrayTest {
 			System.out.println(data);
 		});
 		
-		users.stream().map((data) -> JSONObject(data).forEach(json))
-			userJSON(json)
-		);								// Java의 stream = js의 map
+		users.stream().map((data) -> new JSONObject(data)).forEach((json) -> {
+			usersJSON.put(json);
+		});									// Java의 stream = js의 map, filter 등의 문자열 고차함수와 유사한 메서드를 사용할 수 있게 해주는 메서드
+		
+		System.out.println(usersJSON);
 	}
 }
