@@ -19,44 +19,25 @@ public class MapTest1 {
       users.add(user3);
       users.add(user4);
       users.add(user5);      
-//      users.stream().map((user) -> user.getName()).forEach((name) -> {System.out.println(name);});
+      users.stream().map((user) -> user.getName()).forEach((name) -> {System.out.println(name);});
       
-      
+      System.out.println();
+
       ArrayList<Integer> datas1 = new ArrayList<Integer>();
       IntStream.rangeClosed(1, 10).forEach((n) -> datas1.add(n));
 //      System.out.println(datas1);
-      datas1.
-      // 3. datas1의 모든 값을 10배로 변경한다.
+      datas1.stream().map((n) -> {return (int)n * 10;}).forEach(System.out::print);
       
-      // 4. datas1의 모든 값을 출력한다.
-      
-      
+      System.out.println();
+      System.out.println();
+
       
 //    2. .map()
 //    ArrayList의 값을 알파벳으로 바꿔서 출력하기
 //    ex)원본 [1, 2, 3, 4, 5, ..., 10]
 //    ex)변경 ['A', 'B', 'C', ... 'J']
-//      ArrayList<Integer> alphabet = new ArrayList<Integer>();
-//      IntStream.rangeClosed(1, 10).forEach((n) -> {alphabet.add(n);});
-//      alphabet.stream().map((n) -> {(int)n += 64;});		// 인티저 받고, 인티저에 += 64
-//      
-//      System.out.println(alphabet);
-//      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+      ArrayList<Integer> alphabet = new ArrayList<Integer>();
+      IntStream.rangeClosed(1, 10).forEach((n) -> {alphabet.add(n);});
+      alphabet.stream().map((n) -> {return (char)((int)n + 64);}).forEach((c) -> {System.out.print(c);});		// 인티저 받고, 인티저에 += 64
    }
 }
