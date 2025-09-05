@@ -31,18 +31,21 @@ public class ForEachTest2 {
 		
 		ArrayList<String> datas3 = new ArrayList<String>();
 		// "A~K" 추가
-//		IntStream.rangeClosed('A', 'K').forEach((n) -> {System.out.println(n);});
-		IntStream.rangeClosed('A', 'K').forEach((n) -> {datas3.add(String.valueOf((char)n));});
-		datas3.stream().forEach(System.out::print);
-//		System.out.println(datas3);
+		// 방법1.
+//		IntStream.rangeClosed('A', 'K').forEach((n) -> {System.out.println(n);});				// 65~75
+//		IntStream.rangeClosed('A', 'K').forEach((n) -> {datas3.add(String.valueOf((char)n));});
+//		datas3.stream().forEach(System.out::print);												// ABCDEFGHIJK
+//		System.out.println(datas3);																// [A, B, C, D, E, F, G, H, I, J, K]
 
+		// 방법2.
 //		"ABCDEFGHIJK".chars().forEach((n) -> {datas3.add(String.valueOf((char)n));});
 //		datas3.forEach(System.out::print);
 		
+		// 방법3.
 		ArrayList<Integer> datas33 = new ArrayList<Integer>();
-		IntStream.rangeClosed('A', 'K').forEach(datas33::add);
-//		datas33.forEach(System.out::print);			// data33은 Integer타입의 ArrayList라서 forEach에 들어오는 타입은 Integer타입
-		datas33.forEach((n) -> System.out.print((char)n.intValue()));	// n은 Integer는 클래스형이라 char기본자료형으로 변경불가하여 n의 intValue를 char로 변경
+		IntStream.rangeClosed('A', 'K').forEach(datas33::add);			// 65~75
+		datas33.forEach(System.out::print);								// data33은 Integer타입의 ArrayList라서 forEach에 들어오는 타입은 Integer타입
+//		datas33.forEach((n) -> System.out.print((char)n.intValue()));	// n은 Integer클래스자료형이라 char기본자료형으로 변경불가하여 n의 intValue를 char로 변경
 		
 		
 		
