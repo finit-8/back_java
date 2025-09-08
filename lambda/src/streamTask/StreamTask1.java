@@ -20,7 +20,6 @@ public class StreamTask1 {
 	   
 	   
 	   
-	   
 //      2. ABCDEF를 각각 문자별로 출력
 // 알고리즘: 인트스트림 --> 오브젝트타입 형변환 (mapToObj) 그 다음 collect????
 	   // 방법1.
@@ -43,7 +42,6 @@ public class StreamTask1 {
 	   
 	   
 	   
-	   
 //      3. 1~100까지 중 홀수만 ArrayList에 담고 출력
 	   ArrayList<Integer> odd = new ArrayList<Integer>();
 	   IntStream.rangeClosed(1, 100).forEach((n) -> {
@@ -54,7 +52,6 @@ public class StreamTask1 {
 	   
 	   System.out.println();
 	  
-	   
 	   
 	   
 //      4. A~F까지 중 D를 제외하고 ArrayList에 담고 출력
@@ -68,7 +65,6 @@ public class StreamTask1 {
 
 	   
 	   
-	   	   
 //      5. 5개의 문자열을 모두 소문자로 변경 후 출력
 //      "Black", "WHITE", "reD", "yeLLow", "PInk"
 	   // 알고리즘: toLowerCase();
@@ -89,54 +85,36 @@ public class StreamTask1 {
 // 		List<Charactor> = new List<Charactor>();
 //	   	colors.stream().mapToInt(colors).forEach(System.out::println);
 	   
+// 		문자배열 각 문자열의 인덱스에 접근이 안돼서 먼저 char 어레이리스트로 변환 후, char 어레이리스트 순회 중 조건문으로 전부 소문자로 변경
+// 		List<Charactor> = new List<Charactor>();
+//	   	colors.stream().mapToInt(colors).forEach(System.out::println);
 	   
+	  
 	   
-	// 정답 밑에
 //      6. "Apple", "banana", "Melon", "orange" 중 앞글자가 대문자인 문자열만 출력
-	   // 알고리즘: if (.findFirst ?? 뭐 이런 메서드로 첫번째 캐릭터가 대문자이면) String으로 변환하여 출력 
-	   
-	   
-//      7. 한글을 정수로 변경 "공칠이삼" -> 0723
-	   // 알고리즘: String타입의 어레이리스트 객체생성, "공칠이삼" 추가
-	   //			반복돌려서 그 다음은..... 0부터 9, "공" 부터 "구" 까지 같이 담을 수 있는 자료구조
-	   ArrayList<String> str = new ArrayList<String>(Arrays.asList("공칠이삼"));
-	   str.stream().map((c) -> {});
-	   
-	   
-//      8. 정수를 한글로 변경 0723 -> "공칠이삼"
-      
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   6. "Apple", "banana", "Melon", "orange" 중 앞글자가 대문자인 문자열만 출력
-	   // 알고리즘: if (.findFirst ?? 뭐 이런 메서드로 첫번째 캐릭터가 대문자이면) String으로 변환하여 출력 
 	   ArrayList<String> fruites = new ArrayList<String>(Arrays.asList("Apple", "banana", "Melon", "orange"));
 //	   fruites.stream().forEach((c) -> {System.out.println(c);});
-	   
 	   fruites.stream().filter((c) -> {return c.charAt(0) >= 'A' && c.charAt(0) <= 'Z';}).forEach(System.out::println);;
 	   
-//     7. 한글을 정수로 변경 "공칠이삼" -> 0723
-     String hangle = "공일이삼사오육칠팔구";
-     String input = "일공이사";
-     input.chars().map(hangle::indexOf).forEach(System.out::println);
-     
-//     8. 정수를 한글로 변경 "0723" -> "공칠이삼"
-     String input2 = "0723";
-     input2
-        .chars().map(c -> c - 48)
-        .map(hangle::charAt)
-        .mapToObj((c) -> (char)c)
-        .forEach(System.out::println);
-  }
-}
 
+	   
+//      7. 한글을 정수로 변경 "공칠이삼" -> 0723
+	   String input = "공칠이삼";
+	   String hangle = "공일이삼사오육칠팔구";
+	   input.chars().forEach((e) -> {System.out.println((char)e);});		// 인덱스 하나하나 순회
+	   input.chars().map((e) -> hangle.indexOf(e)).forEach(System.out::println);
+	   input.chars().map(hangle::indexOf).forEach(System.out::println);
+
+	   
+
+//      8. 정수를 한글로 변경 0723 -> "공칠이삼"
+	   String input2 = "0723";
+	   input2
+	   	.chars()
+	   	.map((c) -> c - '0')
+	   	.map((c) -> hangle.charAt(c))	// .map(hangle::charAt)
+	   	.mapToObj((c) -> (char)c)
+	   	.forEach(System.out::println);
 
    }
 }
