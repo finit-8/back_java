@@ -3,6 +3,7 @@ package streamTask;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StreamTask5 {
@@ -21,24 +22,25 @@ public class StreamTask5 {
 		
 //	 7) 취미가 2개인 사람의 취미들만 모아서 ArrayList로 변경하기
 //		ex) [스포츠댄스, 개발, 골프, 야구, 개발 ,놀기]		==> 값이 6개 들어가야됨 (char)
-		// 알고리즘: 필터()로 취미 2개만 있는 배열 만들고, 그 중에서 스플릿으로 자르면 새로운 배열 리턴 ==> 스플릿하면 값이 아니라 String배열
-													// 그러면 String을 Char로 바꾸기
+		// 알고리즘: 필터()로 취미 2개만 있는 배열 만들고, 그 중에서 스플릿으로 자르면 새로운 배열 리턴
 		// 힌트: 형변환
-		String[] hobbies = members
-			.stream()
-			.filter((member) -> {return member.getHobby().split("_").length == 2;})
-			.map((member) -> (member.getHobby()))
-			.collect(Collectors.joining("_"))			// 이거를 못했네~~~!!!!! 	joining하면 문자열반환?????
-			.split("_");								// 						반환된 문자열을 또 잘라서 값 6개 만들기
-		System.out.println(hobbies);
-		
+		String[] twoHobbies = 
+				members.stream().filter((u) -> u.getHobby().split("_").length == 2)
+				.map((u) -> u.getHobby())
+				.collect(Collectors.joining("_"))			// joining하면 문자열반환 --> 스포츠댄스_개발_골프_야구_개발_놀기
+				.split("_");								// 반환된 문자열을 또 잘라서 값 6개의 배열주소로 만듬 --> [스포츠댄스, 개발, 골프, 야구, 개발, 놀기]
+		System.out.println(twoHobbies);
 
-		ArrayList<String> hobbiesList = new ArrayList<String>(Arrays.asList(hobbies));
+		System.out.println(Arrays.toString(twoHobbies));	// Arrays.toString으로 실제 값 반환
+		
+		ArrayList<String> hobbiesList = new ArrayList<String>(Arrays.asList(twoHobbies));	// 주소를 Arrays.asList로 추가하면 주소 안에 실제값이 리턴됨
 		System.out.println(hobbiesList);
 		System.out.println(hobbiesList.size());
-		
-		List<String> hobbiesList2 = Arrays.stream(hobbies).collect(Collectors.toList());
+
+		List<String> hobbiesList2 = Arrays.stream(twoHobbies).collect(Collectors.toList());
 		System.out.println(hobbiesList2);
 		System.out.println(hobbiesList2.size());
 	}
 }
+		
+

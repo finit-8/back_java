@@ -22,7 +22,7 @@ public class StreamTest {
 		
 //		.collect() : '결과를 다양한 타입으로 리턴'하는 메서드로,
 //					1. 클래스타입 및 컬렉션자료형 간의 전환시에는 자유롭게 사용가능
-//					2. 기본자료형stream --> 급이 높은 자료형 전환시에는 .boxed()필요하고
+//					2. 기본자료형stream --> 급이 높은 자료형 전환시에는 .mapToObj나 .boxed()필요하고
 //					   급이 높은 자료형 --> 기본자료형stream 전환시에는 별도의 메서드 사용한다. (ex .mapToInt)
 		ArrayList<Integer> numbers2 = new ArrayList<Integer>(Arrays.asList(1, 10, 6, 4 ,8));
 		
