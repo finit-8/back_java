@@ -1,4 +1,4 @@
-package optinalTest;
+package opotinalTest;
 
 import java.util.Objects;
 

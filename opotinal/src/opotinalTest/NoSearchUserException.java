@@ -1,4 +1,4 @@
-package optinalTest;
+package opotinalTest;
 
 public class NoSearchUserException extends RuntimeException{
 	public NoSearchUserException() {;}

@@ -22,8 +22,8 @@ public class JsonArrayListTest {
 		users.add(user3);
 		users.add(user4);
 		users.add(user5);
-//		System.out.println(users);
-//		System.out.println(new JSONObject(users));
+		System.out.println(users);
+		System.out.println(new JSONObject(users));
 		
 	// 알고리즘
 		// 반복문을 돈다
