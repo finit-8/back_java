@@ -24,7 +24,11 @@ public class MemberDAO {
 	
 	public void closeResources() {
 		try {
-			if(preparedStatement!= null) {
+			if(resultSet != null) {
+				resultSet.close();
+			}
+			
+			if(preparedStatement != null) {
 				preparedStatement.close();
 			}
 			
@@ -40,52 +44,36 @@ public class MemberDAO {
 	
 	// 1) 아이디 중복검사
 	public boolean checkId(String memberEmail) {
-//		- 연결
-		connection = DBConnecter.getConnect();
-		
-//		- 쿼리를 작성한다
-//		preparedStatement
-//		String query = "SELECT ID FROM TBL_MEMBER WHERE MEMBER_EMAIL = \'" + memberEmail + "\'";
-		
-//		preparedStatement (상위호환)
-		String query = "SELECT ID, MEMBER_NAME FROM TBL_MEMBER WHERE MEMBER_EMAIL = ?";
+		connection = DBConnecter.getConnect();			// 연결
+//		String query = "SELECT ID FROM TBL_MEMBER WHERE MEMBER_EMAIL = \'" + memberEmail + "\'";     preparedStatement 쿼리 작성
+		String query = "SELECT ID, MEMBER_NAME FROM TBL_MEMBER WHERE MEMBER_EMAIL = ?"; 		  // preparedStatement (상위호환)
 		boolean check = false;
 		
-
-//		- 쿼리를 보낸다
-// 		query는 try~catch를 강제한다.
-		try {
-			preparedStatement = connection.prepareStatement(query);
+//		쿼리 전송
+		try {													// 외부장치를 연결하는 경우(DB 연결) try ~ catch를 강제한다.
+			preparedStatement = connection.prepareStatement(query);				
+			preparedStatement.setString(1, memberEmail);		// 사용자 입력값을 String query문의 파라미터에 바인딩 == ?에 memberEmail 넣음
 			
-			preparedStatement.setString(1, memberEmail);		// 데이터를 받는 코드로, ? 자리에 멤버이메일 넣으란 소리
-			
-			resultSet = preparedStatement.executeQuery(); 		// 실행코드로, 결과가 있으면 .executeQuery()
-//			preparedStatement.executeUpdate(); 					// 실행코드로, 결과가 없으면 .executeUpdate()
-			
-
-//		 - 데이터를 받는다
-			resultSet.next();									
-			Long id = resultSet.getLong(1);
+//		 - VO타입의 데이터를 받는다
+			resultSet = preparedStatement.executeQuery(); 		// 실행코드 [결과가 있으면 .executeQuery(), 결과가 없으면 .executeUpdate()]
+			resultSet.next();									// db 행에 접근							
+			Long id = resultSet.getLong(1);						
 			String memberName = resultSet.getString(2);
 			System.out.println(id);
 			System.out.println(memberName);
 			
 		} catch (SQLException e) {
-			// 못찾았으면
-			check = true;
+			check = true;										// db에서 데이터를 못찾았으면 check = true
 			System.out.println("checkId(String) Query문 오류");
 			e.printStackTrace();
-		} finally {
-			// 열었던 순 반대로 클로즈
+		} finally {												// 열었던 순 반대로 클로즈
 			try {
 				if(resultSet != null) {
 					resultSet.close();
 				}
-				
 				if(preparedStatement != null) {
 					preparedStatement.close();
 				}
-				
 				if(connection != null) {
 					connection.close();
 				}
@@ -94,8 +82,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-//		- 리턴
-		return check;
+		return check;											// db에서 데이터를 찾았으면 check 리턴
 	}
 	
 	
@@ -103,7 +90,6 @@ public class MemberDAO {
 	public void join(MemberVO memberVO) {
 		// 연결
 		connection = DBConnecter.getConnect();
-		
 		// 쿼리 작성
 		String query = "INSERT INTO TBL_MEMBER"		// MEMBER 뒤에 띄워쓰기 들어가면 오류남
 				+ "VALUES(SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?, ?)";
