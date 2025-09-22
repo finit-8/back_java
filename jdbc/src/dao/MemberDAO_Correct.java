@@ -157,7 +157,6 @@ public class MemberDAO_Correct {
       return isLogin;
    }
    
-//   로그아웃
 //   마이페이지
    public Optional<MemberVO> findById() {
       String query = "SELECT ID, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_AGE, MEMBER_ADDRESS "
@@ -294,8 +293,7 @@ public class MemberDAO_Correct {
    
 //   로그인이 된 상태
 //   회원정보 수정
-   
-   
+	
    
    
    

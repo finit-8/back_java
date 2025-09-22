@@ -44,7 +44,9 @@ public class MemberDAO {
 	
 	// 1) 아이디 중복검사
 	public boolean checkId(String memberEmail) {
-		connection = DBConnecter.getConnect();			// 연결
+//	 	연결
+		connection = DBConnecter.getConnect();	
+//		쿼리 작성
 //		String query = "SELECT ID FROM TBL_MEMBER WHERE MEMBER_EMAIL = \'" + memberEmail + "\'";     preparedStatement 쿼리 작성
 		String query = "SELECT ID, MEMBER_NAME FROM TBL_MEMBER WHERE MEMBER_EMAIL = ?"; 		  // preparedStatement (상위호환)
 		boolean check = false;
@@ -54,8 +56,9 @@ public class MemberDAO {
 			preparedStatement = connection.prepareStatement(query);				
 			preparedStatement.setString(1, memberEmail);		// 사용자 입력값을 String query문의 파라미터에 바인딩 == ?에 memberEmail 넣음
 			
-//		 - VO타입의 데이터를 받는다
+//		쿼리 실행
 			resultSet = preparedStatement.executeQuery(); 		// 실행코드 [결과가 있으면 .executeQuery(), 결과가 없으면 .executeUpdate()]
+//		VO타입의 데이터를 받음
 			resultSet.next();									// db 행에 접근							
 			Long id = resultSet.getLong(1);						
 			String memberName = resultSet.getString(2);
@@ -85,85 +88,77 @@ public class MemberDAO {
 		return check;											// db에서 데이터를 찾았으면 check 리턴
 	}
 	
-	
 	// 회원가입
-	public void join(MemberVO memberVO) {
-		// 연결
+	public void join(MemberVO memberVO1) {
 		connection = DBConnecter.getConnect();
-		// 쿼리 작성
-		String query = "INSERT INTO TBL_MEMBER"		// MEMBER 뒤에 띄워쓰기 들어가면 오류남
-				+ "VALUES(SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?, ?)";
-		
-		// 쿼리 담고
+		String query = "INSERT INTO TBL_MEMBER"
+				+ "VALUES(SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?, ?)";	
 		try {
 			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, memberVO.getMemberEmail());
-			preparedStatement.setString(2, memberVO.getMemberPassword());
-			preparedStatement.setString(3, memberVO.getMemberName());
-			preparedStatement.setInt(4, memberVO.getMemberAge());
-			preparedStatement.setString(5, memberVO.getMemberAddress());
+			preparedStatement.setString(1, memberVO1.getMemberEmail());
+			preparedStatement.setString(2, memberVO1.getMemberPassword());
+			preparedStatement.setString(3, memberVO1.getMemberName());
+			preparedStatement.setInt(4, memberVO1.getMemberAge());
+			preparedStatement.setString(5, memberVO1.getMemberAddress());
 			
-		// 쿼리 실행
 			preparedStatement.executeUpdate();
-			
 		} catch (SQLException e) {
-			System.out.println("join(memberVO) query문 오류");
+			System.out.println("join(memberVO1) query문 오류");
 			e.printStackTrace();
 		} finally {
-		// 리턴 없으면 리소스 해제
 			try {
 				if(preparedStatement != null) {
 					preparedStatement.close();
 				}
-				
 				if(connection != null) {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				System.out.println("리소스 해제 오류");
+				System.out.println("자원해제 중 오류 발생");
 				e.printStackTrace();
 			}
 		}
 	}
 	
-//  로그인, 테스트
-  public boolean login(MemberVO memberVO) {
-     String query = "SELECT ID FROM TBL_MEMBER WHERE MEMBER_EMAIL = ? AND MEMBER_PASSWORD = ?";
-     connection = DBConnecter.getConnect();
-     boolean isLogin = true;
-     
-     try {
-        preparedStatement = connection.prepareStatement(query);
-        preparedStatement.setString(1, memberVO.getMemberEmail());
-        preparedStatement.setString(2, memberVO.getMemberPassword());
+	// 로그인 테스트
+	public boolean login(MemberVO memberVO2) {
+		connection = DBConnecter.getConnect();
+		String query = "SELECT ID FROM TBL_MEMBER WHERE MEMBER_EMAIL = ? AND MEMBER_PASSWORD = ?";
+		boolean isLogin = true;
+		
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, memberVO2.getMemberEmail());
+			preparedStatement.setString(2, memberVO2.getMemberPassword());
+			
+			resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			session = resultSet.getLong(1);
+			
+		} catch (SQLException e) { 
+			isLogin = false;
+			System.out.println("login(memberVO2) query문 오류 발생");
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet != null) {
+					resultSet.close();
+				}
+				if(preparedStatement != null) {
+					preparedStatement.close();
+				}
+				if(connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				System.out.println("자원해제 중 오류 발생");
+				e.printStackTrace();
+			}
+		}
+		return isLogin;
+	}
+	
 
-        resultSet = preparedStatement.executeQuery();
-        resultSet.next();
-        
-//        서버 저장소
-        session = resultSet.getLong(1);
-        
-     } catch (SQLException e) {
-        isLogin = false;
-        e.printStackTrace();
-     } finally {
-        try {
-           if(resultSet != null) {
-              resultSet.close();
-           }
-           if(preparedStatement != null) {
-              preparedStatement.close();
-           }
-           if(connection != null) {
-              connection.close();
-           }
-        } catch (SQLException e) {
-           e.printStackTrace();
-        }
-     }
-     return isLogin;
-  }
-  
     // 마이페이지
   	public Optional<MemberVO> findById(MemberVO memberVO) {
   		String query = "SELECT ID, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_AGE, MEMBER_ADDRESS "
@@ -246,7 +241,7 @@ public class MemberDAO {
   		return isUpdate;
   	}
   	
-  							// 이미 세션에 있으면, ↓ memberVO가 필요없는데, 왜 ↑ 위에는 해야하나?
+  							// 이미 세션에 있으니까 ↓ memberVO가 필요없는데, 왜 ↑ 위에는 해야하나?
   						
   	
   	// 회원탈퇴 ==> 이미 로그인 되어있는 상태
